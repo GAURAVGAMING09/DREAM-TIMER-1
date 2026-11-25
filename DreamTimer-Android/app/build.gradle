@@ -1,0 +1,29 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.dreamtimer.app'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.dreamtimer.app'
+        minSdk 21          // Android 5.0 se lekar latest tak
+        targetSdk 36       // latest Android
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            signingConfig signingConfigs.debug   // seedha install ke liye (self-signed)
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    packaging { jniLibs { useLegacyPackaging = false } }
+    lint { abortOnError false }
+}
